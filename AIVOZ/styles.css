@@ -1,10 +1,9 @@
 body{
     margin: 0px;
     padding: 0px;
-    background: #17a2b8;  
+    background: #17a2b8; 
     justify-content: center;
 }
-
 .action{
     color: white;
     position: fixed;
