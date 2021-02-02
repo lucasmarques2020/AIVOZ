@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>AIVOZ - CODE</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css" type="text/css" media="all">
+        <!--CodeMirror-->
+        <script src="codemirror/lib/codemirror.js"></script>
+        <link rel = "stylesheet" href="codemirror/lib/codemirror.css">
+        <link rel = "stylesheet" href="codemirror/theme/base16-dark.css">
+        <link rel = "stylesheet" href="codemirror/theme/base16-light.css">
+        <link rel = "stylesheet" href="codemirror/theme/ambiance.css">
+        <link rel = "stylesheet" href="codemirror/theme/eclipse.css">
+        <script src="codemirror/mode/javascript/javascript.js"></script>
+        <script src="codemirror/mode/css/css.js"></script>
+        <script src="codemirror/addon/hint/show-hint.js"></script>
+        <script src="codemirror/addon/hint/css-hint.js"></script>
+        <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
+	    <script type="text/javascript" src="js/jquery-fieldselection.min.js"></script>
+        <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
+        
+    </head>
+    <body>
+        <div id = "codeeditor"></div>
+        <script>
+          const editor = CodeMirror(document.getElementById("codeeditor"), {
+          value: '',
+          mode: "css",
+          theme:"eclipse",
+          tabSize: 4,
+          lineNumbers: true,
+          extraKeys: {"Ctrl": "autocomplete"}
+        });
+            
+            function mod_lig_and_dark(){
+                    const elemento = document.getElementById('codeeditor');
+                    const checar = document.getElementById('check');
+                    
+                    if(checar.checked == true){
+                            editor.setOption("theme", "ambiance");
+                          }
+                       
+                    if(checar.checked == false){
+                            editor.setOption("theme", "eclipse");
+                       }
+                }
+        </script>
+        <section>
+            <div class = "action">
+                <span onclick="actionToggle();">+</span>
+                <ul>
+                    <li><a><img src="assets/icon/1.png"></a></li>
+                    <li><a href = "#" target="_blank"><img src="assets/icon/2.png"></a></li>
+                    <li><a><img src="assets/icon/3.png"></a></li>
+                </ul>
+                </div>
+                <script type="text/javascript">
+                    function actionToggle(){
+                        var action = document.querySelector('.action');
+                        action.classList.toggle('active');
+                    }
+                </script>
+            <div class = "codigo">
+                <form class = "form_codigo">
+                    <!--<textarea id = "texta" placeholder="Edite seu código clicando aqui"></textarea>-->
+                    <div class = "modo">
+                    <input id = "check"class = "luzz" name = "opt" type = "checkbox" value = "luz"  onclick="mod_lig_and_dark()">
+                    </div>
+                </form>
+                <div>
+                    <input id = "speakbt" class = "voz" type="image" src="assets/img/microfone.svg">
+                    <div id = "resultSpeak">Clique para falar!</div>
+                </div>
+            </div>
+        </section>
+        <script src = "js/script.js" async></script>
+    </body>
+</html>
