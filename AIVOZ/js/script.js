@@ -35,7 +35,6 @@ var range = $(this).getSelection();
             console.log(resultSpeak);
             resultSpeaker.innerHTML = resultSpeak;
             GetVl = editor.getValue();
-            console.log(p);
             switch(resultSpeak.toLowerCase()){
                     //comando layout
                 case 'modo escuro':
@@ -53,10 +52,10 @@ var range = $(this).getSelection();
                     editor.setOption("value", GetVl+"\n<div></div>");
                     break;
                 case 'criar botão':
-                    editor.setOption("value", GetVl+"\n<input type = 'buttom' value = 'Botão'>");
+                    editor.setOption("value", GetVl+"\n<button>BOTÃO</button>");
                     break;
                 case 'criar parágrafo':
-                    editor.setOption("value", p);
+                    editor.setOption("value", GetVl+"\n <p>Lorem inpusu</p>");
                     break;
                     //comando adicionar
 
