@@ -34,6 +34,7 @@ body{
     transform: rotate(135deg);
 }
 .action img{
+    position: relative;
     width: 20px;
 }
 .action ul li{
@@ -65,9 +66,6 @@ body{
     visibility: hidden;
     transition: 0.3s;
 }
-.action ul li{
-    
-}
 .action.active ul{
     opacity: 1;
     visibility: visible;
@@ -82,6 +80,13 @@ body{
     transition: 0.5s;
     outline:none; 
 }
+#codeeditor{
+    position: fixed;
+    height: 100%;
+    right: 0;
+    width: 50%;
+}
+
 @media (max-width: 600px){
     #resultSpeak{
         width: 45%;
@@ -93,15 +98,9 @@ body{
         transition: 0.5s; 
     }
 }
-#codeeditor{
-    position: absolute;
-    height: 100%;
-    right: 0;
-    width: 50%;
-}
 @media (max-width: 600px){
     .CodeMirror {
-      position: absolute;
+      position: fixed;
       width: 100%;
       bottom: 0;
 }
@@ -175,13 +174,14 @@ input[type="image"]:hover{
     padding: 20px;
     }
     #codeeditor{
-    position: absolute;   
+    position: fixed;   
     bottom: 0;
     width: 100%;  
     }
 }
 @media (max-height: 350px){
     #codeeditor{
+        position: fixed;
         height: 250px;
     }
     .voz{

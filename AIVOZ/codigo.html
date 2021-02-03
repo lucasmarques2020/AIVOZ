@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>AIVOZ - CODE</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/icon/a.svg" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -30,22 +30,27 @@
         <script src="codemirror/addon/hint/show-hint.js"></script>
         <script src="codemirror/addon/hint/css-hint.js"></script>
         <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
+        <script type="text/javascript" src="js/script_save.js"></script>
 	    <script type="text/javascript" src="js/jquery-fieldselection.min.js"></script>
         <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
+        <script type="text/javascript" src="js/FileSaver.js"></script>
         
     </head>
     <body>
+        <!-- Textarea -->
         <div id = "codeeditor"></div>
         <script>
+            //valores CodeMirror
           const editor = CodeMirror(document.getElementById("codeeditor"), {
           value: '',
           mode: "css",
           theme:"eclipse",
           tabSize: 4,
           lineNumbers: true,
-          extraKeys: {"Ctrl": "autocomplete"}
+          extraKeys: {"Ctrl": "autocomplete"},
+          esetSelectionOnContextMenu: true
         });
-            
+            //Alterando layout pagina modo dark e light
             function mod_lig_and_dark(){
                     const elemento = document.getElementById('codeeditor');
                     const checar = document.getElementById('check');
@@ -58,14 +63,16 @@
                             editor.setOption("theme", "eclipse");
                        }
                 }
+               
         </script>
         <section>
+            <!-- Botão para mudar layout -->
             <div class = "action">
                 <span onclick="actionToggle();">+</span>
                 <ul>
                     <li><a><img src="assets/icon/1.png"></a></li>
-                    <li><a href = "#" target="_blank"><img src="assets/icon/2.png"></a></li>
-                    <li><a><img src="assets/icon/3.png"></a></li>
+                    <a href = "#" target="_blank"><li><img src="assets/icon/2.png"></li></a>
+                    <a onclick="salvar();"><li><img src="assets/icon/3.png"></li></a>
                 </ul>
                 </div>
                 <script type="text/javascript">
@@ -75,12 +82,13 @@
                     }
                 </script>
             <div class = "codigo">
-                <form class = "form_codigo">
+                <form class = "form_codigo" id = "asc">
                     <!--<textarea id = "texta" placeholder="Edite seu código clicando aqui"></textarea>-->
                     <div class = "modo">
                     <input id = "check"class = "luzz" name = "opt" type = "checkbox" value = "luz"  onclick="mod_lig_and_dark()">
                     </div>
                 </form>
+                 <!-- Botão voice -->
                 <div>
                     <input id = "speakbt" class = "voz" type="image" src="assets/img/microfone.svg">
                     <div id = "resultSpeak">Clique para falar!</div>
