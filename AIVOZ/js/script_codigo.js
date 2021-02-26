@@ -1,7 +1,90 @@
-function Select(){
+function Select() {
     var input = document.getElementsByClassName()
 }
 
+function recur(resultSpeak) {
+    let Vetor = resultSpeak.toLowerCase().split(' ');
+    let r = '';
+    let aux = '';
+    let auxValor = [];
+    let auxAtr = [];
+    let cont = 0;
+    for (let i = Vetor.length; i >= 0; i--) {
+        //comando tags
+        if (Vetor[i] == 'div' || Vetor[i] == 'divi') {
+            r = '<div' + aux + '>\n\t' + r + '\n</div>';
+            aux = '';
+        } else if (Vetor[i] == 'parágrafo') {
+            r = '<p' + aux + '>\n\t' + r + '\n</p>';
+            aux = '';
+        } else if (Vetor[i] == 'link') {
+            r = '<a' + aux + '>\n\t' + r + '\n</a>';
+            aux = '';
+        } else if (Vetor[i] == 'h1') {
+            r = '<h1' + aux + '>\n\t' + r + '\n</h1>';
+            aux = '';
+        } else if (Vetor[i] == 'h2') {
+            r = '<h2' + aux + '>\n\t' + r + '\n</h2>';
+            aux = '';
+        } else if (Vetor[i] == 'h3') {
+            r = '<h3' + aux + '>\n\t' + r + '\n</h3>';
+            aux = '';
+        } else if (Vetor[i] == 'h4') {
+            r = '<h4' + aux + '>\n\t' + r + '\n</h4>';
+            aux = '';
+        } else if (Vetor[i] == 'h5') {
+            r = '<h5' + aux + '>\n\t' + r + '\n</h5>';
+            aux = '';
+        } else if (Vetor[i] == 'h6') {
+            r = '<h6' + aux + '>\n\t' + r + '\n</h6>';
+            aux = '';
+        } else if (Vetor[i] == 'imagem') {
+            r = '<img' + aux + r + '>';
+            aux = '';
+        } else if (Vetor[i] == 'input') {
+            r = '<input' + aux + r + '>';
+            aux = '';
+        } else if (Vetor[i] == 'label') {
+            r = '<label' + aux + '>\n\t' + r + '\n</label>';
+            aux = '';
+        } else if (Vetor[i] == 'formulário') {
+            r = '<form' + aux + '>\n\t' + r + '\n</form>';
+            aux = '';
+        }
+        //comando auxiliar 
+        else if (Vetor[i] == 'com') {
+            for (let j = 0; j < cont; j++) {
+                aux += ' ' + auxAtr[j] + '="' + auxValor[j] + '"';
+            }
+            cont = 0;
+            auxValor = [];
+            auxAtr = [];
+        }
+        //comando atributo 
+        else if (Vetor[i] == 'classe') {
+            auxAtr[cont] = 'class';
+            cont++;
+        } else if (Vetor[i] == 'identificador') {
+            auxAtr[cont] = 'id';
+            cont++;
+        } else if (Vetor[i] == 'placeholder') {
+            auxAtr[cont] = 'placeholder';
+            cont++;
+        } else if (Vetor[i] == 'caminho') {
+            auxAtr[cont] = 'src';
+            cont++;
+        } else if (Vetor[i] == 'tipo') {
+            auxAtr[cont] = 'type';
+            cont++;
+        } else if (Vetor[i] == 'action') {
+            auxAtr[cont] = 'action';
+            cont++;
+        } else {
+            auxValor[cont] = Vetor[i];
+        }
+    }
+    return r;
+}
 (function() {
     var speakBtn = document.querySelector('#speakbt');
     var resultSpeaker = document.querySelector('#resultSpeak');
@@ -29,6 +112,8 @@ function Select(){
             console.log(resultSpeak);
             resultSpeaker.innerHTML = resultSpeak;
             GetVl = editor.getValue();
+            let cursor = editor.cursorCoords();
+            console.log(cursor);
             switch (resultSpeak.toLowerCase()) {
                 //comando layout
                 case 'modo escuro':
@@ -89,11 +174,7 @@ function Select(){
                     break;
                     //comando alterar
                     //teste
-                case 'teste':
-                    editor.replaceSelection("    <footer>\n    <p>Author: AIVOZ Refsnes</p>\n    <p><a href='AIVOZ:aivoz@example.com'>aivoz@example.com</a></p>\n    </footer>");
-                    let cursor = editor.cursorCoords();
-                    console.log(cursor);
-                    break;
+
                     //comando remover
                 case 'remover tudo':
                     editor.setValue("");
@@ -110,17 +191,19 @@ function Select(){
                     break;
                     //comando buscar
                 case 'rock lee versus gaara':
-                    window.location = 'https://www.youtube.com/watch?v=VgDgWzBL7s4', '_blank';
+                    window.location = 'https://www.youtube.com/watch?v=VgDgWzBL7s4', target = '_blank';
                     break;
                 case 'google':
-                    window.location = 'https://www.google.com', '_blank';
+                    window.location = 'https://www.google.com', target = '_blank';
                     break;
                 case 'launchertech':
-                    window.location = 'https://www.launchertech.com', '_blank';
+                    window.location = 'https://www.launchertech.com', target = '_blank';
+                    break;
+                    //nivel 2 da aplicação
+                default:
+                    editor.replaceSelection("\n" + recur(resultSpeak));
                     break;
             }
-
-
         }, false);
 
 
