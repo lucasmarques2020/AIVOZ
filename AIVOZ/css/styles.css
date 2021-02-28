@@ -159,7 +159,7 @@ section {
 .container-main button {
     cursor: pointer;
     margin-top: 20px;
-    width: 70%;
+    width: 300px;
     padding: 15px;
     font-size: 20px;
     background: white;
@@ -178,10 +178,11 @@ section {
 }
 
 .container-img img {
-    width: 600px;
+    width: 500px;
 }
 
 .bubbles {
+    position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
