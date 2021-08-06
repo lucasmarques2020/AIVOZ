@@ -148,7 +148,8 @@ body {
 }
 
 .container-text h1 {
-    font-size: 3em;
+    font-family: 'Poppins';
+    font-size: 3.2rem;
 }
 
 .container-text h2 {
