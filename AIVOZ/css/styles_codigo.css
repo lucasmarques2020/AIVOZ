@@ -60,7 +60,9 @@ body {
     transition: 0.5s;
     background: rgb(4, 100, 179);
 }
-
+.action a{
+    outline: none;
+}
 .action ul {
     list-style-type: none;
     position: absolute;
@@ -73,6 +75,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
+    outline: none;
     
 }
 
@@ -80,6 +83,7 @@ body {
     opacity: 1;
     visibility: visible;
     transition: 0.3s;
+    outline: none;
 }
 
 #resultSpeak {
