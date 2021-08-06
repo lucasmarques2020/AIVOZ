@@ -30,6 +30,7 @@ body {
     font-family: fantasy;
     font-size: 2em;
     transition: 0.3s ease-in-out;
+    outline: none;
 }
 
 .action.active span {
@@ -52,6 +53,7 @@ body {
     margin-bottom: 20px;
     border-radius: 40px;
     box-shadow: -2px 2px 8px #020202;
+    outline: none;
 }
 
 .action ul li:hover {
@@ -71,6 +73,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
+    
 }
 
 .action.active ul {
