@@ -11,3 +11,10 @@
     height: 100%;
     color: rgb(206, 37, 37);
 }
+#space{
+    width: 72%;
+}
+.complete{
+    width: 100% !important;
+    border: none !important;
+}
