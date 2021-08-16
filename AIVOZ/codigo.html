@@ -44,7 +44,7 @@
         //valores CodeMirror
         const editor = CodeMirror(document.getElementById("codeeditor"), {
             value: '',
-            mode: "css",
+            mode: "html",
             theme: "eclipse",
             tabSize: 4,
             lineNumbers: true,
@@ -58,6 +58,7 @@
             autocorrect: true,
             autocapitalize: true
         });
+
         //printando
         function run() {
             var runCode = editor.getValue();
@@ -180,7 +181,7 @@
                 action.classList.toggle('active');
             }
         </script>
-        <div class="codigo">
+        <div class="codigo col-6">
             <form class="form_codigo" id="asc">
                 <!--<textarea id = "texta" placeholder="Edite seu código clicando aqui"></textarea>-->
                 <div class="modo">
@@ -189,7 +190,7 @@
             </form>
             <!-- Botão voice -->
             <!-- Test -->
-            <div>
+            <div class = "col-6">
                 <input id="speakbt" class="voz rounded float-right img-fluid" type="image" src="assets/icon/microfone.svg">
                 <div id="resultSpeak">Clique para falar!</div>
             </div>

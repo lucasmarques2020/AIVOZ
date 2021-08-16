@@ -91,7 +91,7 @@ body {
     font-size: 2em;
     text-align: center;
     position: fixed;
-    top: 70%;
+    bottom: 150px;
     transition: 0.5s;
     outline: none;
 }
