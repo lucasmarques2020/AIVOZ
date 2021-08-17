@@ -7,10 +7,6 @@
     color: rgb(0, 140, 255) !important;
     transition: .1.5s ease-in-out;
 }
-.menu-lateral{
-    height: 100%;
-    color: rgb(206, 37, 37);
-}
 #space{
     width: 72%;
 }
