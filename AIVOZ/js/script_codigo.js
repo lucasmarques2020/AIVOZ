@@ -201,7 +201,7 @@ function recur(resultSpeak) {
                     break;
                     //nivel 2 da aplicação
                 default:
-                    editor.replaceSelection("\n" + recur(resultSpeak));
+                    editor.replaceSelection(recur(resultSpeak));
                     break;
             }
         }, false);
