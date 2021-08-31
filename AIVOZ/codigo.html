@@ -7,18 +7,14 @@
     <meta name="description" content="" />
     <meta name="author" content="Lucas Marques Bandeira" />
     <title>AIVOZ - CODE</title>
-    <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/icon/a.svg" />
-    <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
         rel="stylesheet" type="text/css" />
-    <!-- Third party plugin CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles_codigo.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css" type="text/css" media="all">
 
@@ -51,11 +47,11 @@
         <div>
             <button id="close" onclick="fechar();">X</button>
             <h1 id="livepreview">LIVE PREVIEW</h1>
-            <iframe id="windows-out"></iframe>
+            <iframe id="windows-out" style="height: 100vh; width: 100%;"></iframe>
         </div>
-        <form style="position: fixed; left: 0; right: 0; z-index: 1;" id="asc">
+        <form style="position: absolute; left: 0; right: 0; z-index: 1;" id="asc">
             <!--<textarea id = "texta" placeholder="Edite seu código clicando aqui"></textarea>-->
-            <div class="modo">
+            <div class="modo ">
                 <input id="check" class="luzz" name="opt" type="checkbox" value="luz"
                     onclick="mod_lig_and_dark()">
             </div>
@@ -66,14 +62,14 @@
                 <!-- Botão voice -->
                 <!-- Test -->
                 <div class="text-center">
-                    <div class="pai-voz"><input id="speakbt"  class="voz" type="image" src="assets/icon/microfone.svg" style="z-index: 2;">
+                    <div class="pai-voz"><input id="speakbt"  class="voz" type="image" src="assets/icon/microfone.svg" style="position:relative;z-index: 2;">
                     </div>
                     <div id="resultSpeak" class="">Clique para falar!</div>
                 </div>
             </div>
             <!-- Textarea -->
-            <div class="col-md-6 col-sm-12 d-flex flex-row" style="height: 100%; margin:0; padding:0;">
-                <div id="codeeditor" class="flex-grow-1" style="z-index: 2; height: 100%;"></div>
+            <div class="col-md-6 col-sm-12 d-flex flex-row" style="height: 100%; margin:0; padding:0; position: relative">
+                <div id="codeeditor" class="flex-grow-1" style="z-index: 2; height: 100%; width: 100%;"></div>
                 <div class="action" style="z-index: 2">
                     <span onclick="actionToggle();">+</span>
                     <ul>
