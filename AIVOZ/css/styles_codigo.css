@@ -2,11 +2,9 @@ body {
     margin: 0px;
     padding: 0px;
     background: rgb(0, 140, 255);
+    justify-content: center;
 }
-.fatherAll{
-    height: 100vh;
-    width: 100vw;
-}
+
 .action {
     color: white;
     position: fixed;
@@ -22,11 +20,11 @@ body {
 }
 
 .action span {
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     align-items: center;
     color: white;
     font-family: fantasy;
@@ -36,7 +34,7 @@ body {
 }
 
 .action.active span {
-    transform: rotate(360deg);
+    transform: rotate(135deg);
 }
 
 .action img {
@@ -68,11 +66,17 @@ body {
 .action ul {
     list-style-type: none;
     position: absolute;
+    right: 10px;
+    background: rgb(0, 140, 255);
+    width: 20px;
+    height: 20px;
+    padding: 20px;
     border-radius: 50%;
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
     outline: none;
+    
 }
 
 .action.active ul {
@@ -81,24 +85,42 @@ body {
     transition: 0.3s;
     outline: none;
 }
-.action ul li{
-    position: relative;
-    right: 30px;
-    width: 30px;
-    height: 30px;
-    padding: 30px;
+
+#resultSpeak {
+    width: 47%;
+    font-size: 2em;
+    text-align: center;
+    position: fixed;
+    bottom: 150px;
+    transition: 0.5s;
+    outline: none;
 }
-.codigo-pai{
+
+#codeeditor {
     position: fixed;
     height: 100%;
     right: 0;
+    width: 50%;
 }
-#codeeditor {
-    position: relative;
-    right: -12px;
-    background-color: yellow;
-    height: 100%;
-    width: 100%;
+
+@media (max-width: 600px) {
+    #resultSpeak {
+        width: 40%;
+        font-size: 2em;
+        text-align: center;
+        position: fixed;
+        top: 30%;
+        left: 30%;
+        transition: 0.5s;
+    }
+}
+
+@media (max-width: 600px) {
+    .CodeMirror {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
 }
 
 input[type="checkbox"] {
@@ -137,29 +159,18 @@ input:checked[type="checkbox"]:before {
     left: 40px;
 }
 
-.botoes{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-.pai_btn_voice{
-    position: relative;
-    top: 300px;
-}
-#resultSpeak {
-    font-size: 2em;
-    outline: none;
-}
-.pai-voz{
-    display: flex;
-    justify-content: center;
-}
 .voz {
     width: 100px;
     height: 100px;
     padding: 20px;
+    justify-content: center;
+    object-position: center;
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 18%;
     transition: 0.5s;
-    border-radius: 100% !important;
+    border-radius: 100%;
     outline: none;
 }
 
@@ -176,4 +187,32 @@ input[type="image"]:hover {
     color: white;
 }
 
+@media (max-width: 600px) {
+    .voz {
+        text-align: center;
+        position: absolute;
+        left: 36%;
+        top: 10%;
+        object-position: center;
+        border-radius: 100%;
+        padding: 20px;
+    }
+    #codeeditor {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}
 
+@media (max-height: 350px) {
+    #codeeditor {
+        position: fixed;
+        height: 100%;
+    }
+    .voz {
+        left: 20%;
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+    }
+}
