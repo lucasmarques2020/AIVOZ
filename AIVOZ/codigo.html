@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="author" content="Lucas Marques Bandeira" />
     <title>AIVOZ - CODE</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/icon/a.svg" />
@@ -12,12 +13,15 @@
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
     <!-- Third party plugin CSS-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles_codigo.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css" type="text/css" media="all">
+
     <!--CodeMirror-->
     <script src="codemirror/lib/codemirror.js"></script>
     <link rel="stylesheet" href="codemirror/lib/codemirror.css">
@@ -38,13 +42,68 @@
     <script type="text/javascript" src="js/jquery-fieldselection.min.js"></script>
     <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
     <script type="text/javascript" src="js/FileSaver.js"></script>
-    
+
 
 </head>
 
 <body>
-    <!-- Textarea -->
-    <div id="codeeditor"></div>
+    <div class="fatherAll container-fluid">
+        <div>
+            <button id="close" onclick="fechar();">X</button>
+            <h1 id="livepreview">LIVE PREVIEW</h1>
+            <iframe id="windows-out"></iframe>
+        </div>
+        <form style="position: fixed; left: 0; right: 0; z-index: 1;" id="asc">
+            <!--<textarea id = "texta" placeholder="Edite seu código clicando aqui"></textarea>-->
+            <div class="modo">
+                <input id="check" class="luzz" name="opt" type="checkbox" value="luz"
+                    onclick="mod_lig_and_dark()">
+            </div>
+        </form>
+        <div class="row" style="height: 100%;">
+            <!-- Botão para mudar layout -->
+            <div class="col-md-6 col-sm-12 d-flex flex-column justify-content-center">
+                <!-- Botão voice -->
+                <!-- Test -->
+                <div class="text-center">
+                    <div class="pai-voz"><input id="speakbt"  class="voz" type="image" src="assets/icon/microfone.svg" style="z-index: 2;">
+                    </div>
+                    <div id="resultSpeak" class="">Clique para falar!</div>
+                </div>
+            </div>
+            <!-- Textarea -->
+            <div class="col-md-6 col-sm-12 d-flex flex-row" style="height: 100%; margin:0; padding:0;">
+                <div id="codeeditor" class="flex-grow-1" style="z-index: 2; height: 100%;"></div>
+                <div class="action" style="z-index: 2">
+                    <span onclick="actionToggle();">+</span>
+                    <ul>
+                        <a onclick="recarregar();">
+                            <li>
+                                <span><img src="assets/icon/1.png"></span>
+
+                            </li>
+                        </a>
+                        <a onclick="run();">
+                            <li>
+                                <span> <img src="assets/icon/2.png"></span>
+                            </li>
+                        </a>
+                        <a onclick="salvar();">
+                            <li>
+                                <span> <img src="assets/icon/3.png"></span>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+                <script type="text/javascript">
+                    function actionToggle() {
+                        var action = document.querySelector('.action');
+                        action.classList.toggle('active');
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
     <script>
         //valores CodeMirror
         const editor = CodeMirror(document.getElementById("codeeditor"), {
@@ -100,29 +159,28 @@
             }
         }
         //Apagar código
-        function recarregar(){
+        function recarregar() {
             editor.setValue("");
         }
     </script>
-    <button id="close" onclick="fechar();">X</button>
-    <h1 id="livepreview">LIVE PREVIEW</h1>
-    <iframe id="windows-out"></iframe>
-
 
     <style>
         #windows-out {
+            padding: 0;
+            margin: 0;
             display: none;
-            z-index: 1;
+            z-index: 5;
             position: absolute;
+            left: 0;
             background-color: white;
-            height: 100%;
-            width: 100%;
+            height: 100vh;
+            width: 100vw;
         }
-        
+
         #livepreview {
             font-size: 10px;
             display: none;
-            z-index: 3;
+            z-index: 6;
             position: absolute;
             left: 45%;
             top: 0px;
@@ -133,7 +191,7 @@
             object-position: center;
             border-radius: 10px;
         }
-        
+
         #close {
             border-radius: 100%;
             padding: 10px;
@@ -146,64 +204,21 @@
             top: 2px;
             left: 2px;
             display: none;
-            z-index: 2;
+            z-index: 6;
             color: black;
             transition: 0.3s;
         }
-        
+
         #close:hover {
             background-color: white;
             box-shadow: 0px 0px 10px rgb(32, 32, 32);
             color: red;
         }
     </style>
-    <section>
-        <!-- Botão para mudar layout -->
-        <div class="action">
-            <span onclick="actionToggle();">+</span>
-            <ul>
-                <a onclick = "recarregar();">
-                    <li>
-                        <img src="assets/icon/1.png">
-                
-                    </li>
-                </a>
-                <a onclick="run();">
-                    <li>
-                        <img src="assets/icon/2.png">
-                    </li>
-                </a>
-                <a onclick="salvar();">
-                    <li>
-                        <img src="assets/icon/3.png">
-                    </li>
-                </a>
-            </ul>
-        </div>
-        <script type="text/javascript">
-            function actionToggle() {
-                var action = document.querySelector('.action');
-                action.classList.toggle('active');
-            }
-        </script>
-        <div class="codigo col-6">
-            <form class="form_codigo" id="asc">
-                <!--<textarea id = "texta" placeholder="Edite seu código clicando aqui"></textarea>-->
-                <div class="modo">
-                    <input id="check" class="luzz" name="opt" type="checkbox" value="luz" onclick="mod_lig_and_dark()">
-                </div>
-            </form>
-            <!-- Botão voice -->
-            <!-- Test -->
-            <div class = "col-6">
-            
-                <input id="speakbt" class="voz rounded float-right img-fluid" type="image" src="assets/icon/microfone.svg">
-                <div id="resultSpeak">Clique para falar!</div>
-            </div>
-        </div>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="js/script_codigo.js" async></script>
 </body>
 
